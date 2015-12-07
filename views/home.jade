@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  .page-header
+    h1 Follow Management System
+    p.lead Let us manage our followers with multiple users.
+
+
+  // Show error or success messages
+  if isError
+    .alert.alert-danger
+      strong Foutmelding. Operatie niet mogelijk!
+
+  if isSuccess
+    .alert.alert-success
+      strong Opgeslagen!
+
+
+
+  h2 List of followers
+
+  table.table.table-condensed.table-hover
+    thead
+      th Name
+      th City
+      th Email
+      th Delete
+    tbody
+
+      each follower, email in followList
+        tr
+          // Name of follower
+          td #{follower.name}
+          td #{follower.city}
+
+          // JavaScript inside the attribute output tag ( #{} )
+          td #{email.toLowerCase()}
+
+          // Link to delete the follower
+          td
+            // TODO: Maak link naar de /delete/:email route, TIP: de attribute waar op gezocht wordt is email.
+
+            // a(href='?') Delete
+
+
+
+  h2 Add new follower
+
+  form(action='', method='post', autocomplete='false')
+
+    .form-group
+      label Name
+      input.form-control(type='text', name='name')
+
+    // TODO: Voeg een veld toe voor de attribuut 'city'. Er moet ook in de controller een wijziging gemaakt worden!
+
+    .form-group
+      label Email
+      input.form-control(type='email', name='email')
+
+    button.btn.btn-lg.btn-success(type='submit') Add follower
+
+  br
+  br
