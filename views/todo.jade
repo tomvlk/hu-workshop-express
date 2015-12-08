@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Wrokshop Node + Express (TodoList)
+
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css')
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+
+    body
+      h1 Simple TodoList in Express
+
+      .container
+        block content
+          ul
+            each val, index in todoList
+              li
+                a(class="btn btn-lg btn-success" href='/todolist?id=#{index}') #{val}
+
+
+
+
+
+        form(action='/todolist' method='post')
+          .form-group
+            input.form-control(type='text', name="todoitem", placeholder="Dingen om te onthouden")
+
+          button.btn.btn-lg.btn-success(type='submit') Todo
