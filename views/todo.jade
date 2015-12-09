@@ -5,9 +5,13 @@ block content
 
       .container
           ul
+          if(todoList.length == 0)
+            h1 Er staat nog niks op het lijstje
+          else
             each val, index in todoList
               li
-                a(class="btn btn-lg btn-success" href='/todolist?id=#{index}') Delete | #{val}
+                span #{val}
+                a(class="btn btn-smr btn-success" href='/todolist?id=#{index}') Done
 
 
         form(action='/todolist' method='post')

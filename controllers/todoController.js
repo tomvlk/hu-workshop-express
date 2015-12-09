@@ -2,11 +2,11 @@
 module.exports = {};
 
 //Mock Database
-var items = ["NodeJS Applicatie schrijven"];
+var items = ["LOL"];
 
 module.exports.getTodo = function(req, res, next) {
   if(req.query.hasOwnProperty('id')) {
-    items.splice(req.query.hasOwnProperty('id'), 1);
+    items.splice(req.param('id'), 1);
 
     res.redirect('/todolist');
     return;
@@ -20,7 +20,7 @@ module.exports.getTodo = function(req, res, next) {
 module.exports.postTodo = function(req, res, next) {
   var item = req.body.todoitem;
   //Push item in todolist array
-  items.push(item);
+  items.unshift(item);
 
   //Redirect back to the page
   res.redirect('/todolist');
