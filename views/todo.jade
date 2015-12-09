@@ -7,7 +7,8 @@ block content
           ul
             each val, index in todoList
               li
-                a(class="btn btn-lg btn-success" href='/todolist?id=#{index}') #{val}
+                a(class="btn btn-lg btn-success" href='/todolist?id=#{index}') Delete | #{val}
+
 
         form(action='/todolist' method='post')
           .form-group
