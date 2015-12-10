@@ -5,12 +5,18 @@ block content
     h1 Simple TodoList in Express
 
   ul
-    each val, index in todoList
-      li
-        a(class="btn btn-lg btn-success" href='/todolist?id=#{index}') #{val}
-      
+    if(todoList.length == 0)
+      h1 Er staat nog niks op het lijstje
+    else
+      each val, index in todoList
+        li
+          span #{val}
+          a(class="btn btn-smr btn-success" href='/todolist?id=#{index}') Done
+
+
   form(action='/todolist' method='post')
     .form-group
       input.form-control(type='text', name="todoitem", placeholder="Dingen om te onthouden")
 
-    button.btn.btn-lg.btn-success(type='submit') Todo
+    button.btn.btn-lg.btn-success(type='submit') Add Todo
+
