@@ -20,11 +20,11 @@ module.exports.getHome = function (req, res, next) {
 
 
 // Post homepage
-// TODO: Voeg city veld bij.
 module.exports.postHome = function (req, res, next) {
     // Map from the posted body
     var name = req.body.name;
     var email = req.body.email;
+    var city = req.body.city;
 
     // Check for empty or undefined variables
     if (!name || !email) {
@@ -42,9 +42,20 @@ module.exports.postHome = function (req, res, next) {
 
     // Ok, lets create the object inside the storage. Currently only the name is given by the form.
     storage[email] = {
-        name: name
+        name: name,
+        city: city
     };
 
     // After saving, reload the homepage with the success message
+    res.redirect('/?success');
+};
+
+module.exports.getDelete = function (req, res, next) {
+    var email = req.params.email;
+
+    if (storage.hasOwnProperty(email)) {
+        delete storage[email];
+    }
+
     res.redirect('/?success');
 };

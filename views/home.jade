@@ -38,6 +38,7 @@ block content
 
           // Link to delete the follower
           td
+            a(href='/delete/#{email}') Delete
             // TODO: Maak link naar de /delete/:email route, TIP: de attribute waar op gezocht wordt is email.
 
             // a(href='?') Delete
@@ -52,7 +53,9 @@ block content
       label Name
       input.form-control(type='text', name='name')
 
-    // TODO: Voeg een veld toe voor de attribuut 'city'. Er moet ook in de controller een wijziging gemaakt worden!
+    .form-group
+      label City
+      input.form-control(type='text', name='city')
 
     .form-group
       label Email

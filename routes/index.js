@@ -13,6 +13,9 @@ router.get('/', homeController.getHome);
 /* POST home page */
 router.post('/', homeController.postHome);
 
+/* verwijder */
+router.get('/delete/:email', homeController.getDelete);
+
 /* GET Todo page */
 router.get('/todolist', todoController.getTodo);
 
