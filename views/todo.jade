@@ -4,15 +4,22 @@ block content
   .page-header
     h1 Simple TodoList in Express
 
-  ul
-    if(todoList.length == 0)
-      h1 Er staat nog niks op het lijstje
-    else
-      each val, index in todoList
-        li
-          span #{val}
-          a(class="btn btn-smr btn-success" href='/todolist?id=#{index}') Done
-
+  if(todoList.length == 0)
+    h1 Er staat nog niks op het lijstje
+  else
+    table.table.table-responsive.table-hover
+      thead
+        tr
+          th Todo
+          th Actie
+      tbody
+        each val, index in todoList
+          tr
+            td #{val}
+            td
+              a(class="btn btn-smr btn-success" href='/todolist?id=#{index}')
+                span.glyphicon.glyphicon-ok
+                | &nbsp;Done
 
   form(action='/todolist' method='post')
     .form-group
