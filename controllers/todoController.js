@@ -13,6 +13,7 @@ module.exports.getTodo = function(req, res, next) {
     return;
   }
 
+  // Render the view with Jade (views/todo.jade)
   res.render('todo',{
     todoList: items
   })
@@ -20,6 +21,13 @@ module.exports.getTodo = function(req, res, next) {
 
 module.exports.postTodo = function(req, res, next) {
   var item = req.body.todoitem;
+
+  // Check for empty content
+  if (item == "") {
+    res.redirect('/todolist');
+    return;
+  }
+
   //Push item in todolist array
   items.unshift(item);
 
